@@ -15,6 +15,10 @@
   <name>petclinic</name>
 
   <properties>
+    
+    <sonar.projectKey>Harvey2504_jgsu-spring-petclinic</sonar.projectKey>
+  <sonar.organization>myfirstappinqube</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
     <!-- Generic properties -->
     <java.version>1.8</java.version>
