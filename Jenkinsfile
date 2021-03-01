@@ -121,8 +121,8 @@ pipeline{
                 script{
                     last_started=env.STAGE_NAME
                 }
-                sshagent(['73480030-7719-475d-8bb3-d7a4fc22c524']){
-                    sh 'scp -r /var/jenkins_home/workspace/SpringPetDeploy/artifacts/*.jar ubuntu@3.18.221.13:/home/ubuntu/artifacts'
+                sshagent(['1c35a59b-1ef3-458c-8c5f-345bf00e1baf']){
+                    sh 'scp -r /var/jenkins_home/workspace/pipeline1/artifacts/*.jar ubuntu@3.22.222.54:/home/ubuntu/artifacts'
         }
             }
         } 
