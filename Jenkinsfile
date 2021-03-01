@@ -64,7 +64,7 @@ pipeline{
                 script{
                     last_started=env.STAGE_NAME
                 }
-                withSonarQubeEnv('sonarqube3'){
+                withSonarQubeEnv('sonarqube1'){
                     sh 'mvn sonar:sonar'
                 }
             }
