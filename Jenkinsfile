@@ -90,7 +90,7 @@ pipeline{
                         "files":[
                             {
                               "pattern": "target/*.jar",
-                                "target": "art-doc-dev-local2"
+                                "target": "art-doc-dev-local1"
                              }
                         ]
                     }''',
@@ -107,7 +107,7 @@ pipeline{
                     spec: '''{
                         "files":[
                             {
-                              "pattern": "art-doc-dev-local2/",
+                              "pattern": "art-doc-dev-local1/",
                                  "target": "artifacts/"
                              }
                         ]
