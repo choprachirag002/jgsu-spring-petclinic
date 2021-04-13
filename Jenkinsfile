@@ -129,7 +129,7 @@ pipeline{
                 script{
                     last_started=env.STAGE_NAME
                 }
-                sshagent(['1c35a59b-1ef3-458c-8c5f-345bf00e1baf']){
+                sshagent(['9a8de372-41a1-4155-80a7-e798334c8e02']){
                     sh 'scp -r /var/jenkins_home/workspace/pipeline1/artifacts/*.jar ubuntu@18.217.51.161:/home/ubuntu/artifacts'
         }
             }
