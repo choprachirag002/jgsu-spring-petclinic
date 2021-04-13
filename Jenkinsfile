@@ -79,6 +79,14 @@ pipeline{
               }
             }
           }
+        stage("collect-artifacts") {
+            steps {
+                script{
+                    last_started=env.STAGE_NAME
+                }
+              archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+            }
+          }
         stage ('deploy to artifactory'){
             steps{
                 script{
@@ -122,7 +130,7 @@ pipeline{
                     last_started=env.STAGE_NAME
                 }
                 sshagent(['1c35a59b-1ef3-458c-8c5f-345bf00e1baf']){
-                    sh 'scp -r /var/jenkins_home/workspace/pipeline1/artifacts/*.jar ubuntu@3.22.222.54:/home/ubuntu/artifacts'
+                    sh 'scp -r /var/jenkins_home/workspace/pipeline1/artifacts/*.jar ubuntu@18.217.51.161:/home/ubuntu/artifacts'
         }
             }
         } 
