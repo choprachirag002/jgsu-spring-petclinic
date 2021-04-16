@@ -16,7 +16,7 @@ pipeline{
                 script{
                     last_started=env.STAGE_NAME
                 }
-                sh 'mvn clean'
+                sh 'mvn clean package'
             }
         }
         
