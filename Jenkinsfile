@@ -19,15 +19,7 @@ pipeline{
                 sh 'mvn clean'
             }
         }
-         
-        stage('maven-install'){
-            steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
-                sh 'mvn install'
-            }
-        }
+        
         stage('sonar-analysis'){
             steps{
                 script{
@@ -77,18 +69,7 @@ pipeline{
             }
         }
 
-        stage('aws deployment'){
-            steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
-                sshagent(['82a824c8-6ef1-446f-88b9-e9ecee313624']){
-                    sh 'scp -r /var/jenkins_home/workspace/pipeline1/artifacts/*.jar ubuntu@18.217.51.161:/home/ubuntu/artifacts'
-        }
-            }
-        } 
-
-    }
+        
         post{
             success{
                 mail bcc: '', body: "<b>Pipeline Success</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br>Last Stage Completed: $last_started <br> URL: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Pipeline Information System: ${env.JOB_NAME}", to: "chopra.chirag002@gmail.com";
