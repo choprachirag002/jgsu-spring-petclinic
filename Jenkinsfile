@@ -19,38 +19,7 @@ pipeline{
                 sh 'mvn clean'
             }
         }
-         stage('maven-validate'){
-            steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
-                sh 'mvn validate'
-            }
-        }
-         stage('maven-compile'){
-            steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
-                sh 'mvn compile'
-            }
-        }
-        stage('maven-test'){
-            steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
-                sh 'mvn test'
-            }
-        }
-        stage('maven-package'){
-            steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
-                sh 'mvn package'
-            }
-        }
+         
         stage('maven-install'){
             steps{
                 script{
@@ -69,24 +38,8 @@ pipeline{
                 }
             }
         }
-        stage("quality-gate") {
-            steps {
-                script{
-                    last_started=env.STAGE_NAME
-                }
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-          }
-        stage("collect-artifacts") {
-            steps {
-                script{
-                    last_started=env.STAGE_NAME
-                }
-              archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-            }
-          }
+        
+       
         stage ('deploy to artifactory'){
             steps{
                 script{
