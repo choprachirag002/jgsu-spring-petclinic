@@ -1,9 +1,6 @@
 pipeline{
     agent any
-    
-    triggers{
-        pollSCM('* * * * *')
-    }
+   
 
     tools{
         maven 'maven'
@@ -62,9 +59,7 @@ pipeline{
         
         stage('aws deployment'){
             steps{
-                script{
-                    last_started=env.STAGE_NAME
-                }
+               
                 sshagent(['58061018-9ed5-4a1e-960e-87fc0383adba']){
                     sh 'scp -r /var/jenkins_home/workspace/pipeline1/artifacts/*.jar ubuntu@18.188.155.174:/home/ubuntu/artifacts'
         }
